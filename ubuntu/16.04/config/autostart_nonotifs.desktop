@@ -1,0 +1,4 @@
+[Desktop Entry]
+Name=nonotifs
+Exec=/bin/bash /opt/nonotifs/nonotifs/run_nn
+Type=Application
