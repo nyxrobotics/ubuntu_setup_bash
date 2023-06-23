@@ -39,4 +39,4 @@ sudo apt install -y ibus-mozc emacs-mozc
 killall ibus-daemon
 ibus-daemon -d -x &
 # >>>Install tools
-sudo apt install gnome-tweak-tool gparted guvcview
+sudo apt install -y gnome-tweak-tool gparted guvcview

@@ -5,4 +5,4 @@ bash ubuntu_tools.sh
 bash popup_block.sh
 bash ricty.sh
 bash sublimetext3.sh
-# bash nvidia.sh
+bash nvidia.sh
