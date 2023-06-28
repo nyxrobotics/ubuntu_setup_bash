@@ -22,7 +22,6 @@ sudo apt-key add /var/cuda-repo-ubuntu2004-11-4-local/3bf863cc.pub
 sudo apt update
 sudo apt --only-upgrade install cuda-repo-ubuntu2004-11-4-local
 sudo apt install -y cuda
-#sudo apt-mark hold cuda-drivers
 #create symbolic link for cublas (for gazr)
 # sudo ln -s /usr/lib/x86_64-linux-gnu/libcublas.so /usr/local/cuda-11.4/lib64/libcublas.so
 if ! grep -Fxq "## CUDA and cuDNN paths" ~/.bashrc
