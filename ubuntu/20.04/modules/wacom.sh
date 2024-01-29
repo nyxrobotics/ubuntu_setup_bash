@@ -13,8 +13,8 @@ else
     ./configure;
 fi
 make
-sudo checkinstall -yD --pkgname=input-wacom --pkgversion=1
-sudo dpkg -i input-wacom_1-1_amd64.deb
+sudo checkinstall -yD --pkgname=input-wacom --pkgversion=5.15
+sudo dpkg -i input-wacom_5.15-1_amd64.deb
 
 ### xf86-input-wacom
 cd ~/lib/
@@ -37,5 +37,5 @@ cd libwacom
 git checkout -b 1.9 libwacom-1.9
 meson build
 ninja -C ./build
-sudo checkinstall --fstrans=no -yD --pkgname=libwacom --pkgversion=1 bash -c "mkdir -p /usr/local/share/libwacom/layouts; ninja -C ./build install"
-sudo dpkg -i libwacom_1-1_amd64.deb
+sudo checkinstall --fstrans=no -yD --pkgname=libwacom --pkgversion=1.9 bash -c "mkdir -p /usr/local/share/libwacom/layouts; ninja -C ./build install"
+sudo dpkg -i libwacom_1.9-1_amd64.deb
