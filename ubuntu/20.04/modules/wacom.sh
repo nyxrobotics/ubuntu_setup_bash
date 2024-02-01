@@ -25,7 +25,7 @@ sudo apt install -y autoconf pkg-config make xutils-dev libtool xserver-xorg-dev
 
 set -- --prefix="/usr" --libdir="$(readlink -e $(ls -d /usr/lib*/xorg/modules/input/../../../ | head -n1))"
 if test -x ./autogen.sh; then ./autogen.sh "$@"; else ./configure "$@"; fi && make || echo "Build Failed"
-sudo checkinstall -yD --pkgname=xf86-input-wacom --pkgversion=1
+sudo checkinstall -yD --pkgname=xf86-input-wacom --pkgversion=1.0
 sudo dpkg -i xf86-input-wacom_1-1_amd64.deb
 
 ### libwacom
@@ -36,6 +36,6 @@ git clone git@github.com:linuxwacom/libwacom.git
 cd libwacom
 git checkout -b 1.9 libwacom-1.9
 meson build
-ninja -C ./build
-sudo checkinstall --fstrans=no -yD --pkgname=libwacom --pkgversion=1.9 bash -c "mkdir -p /usr/local/share/libwacom/layouts; ninja -C ./build install"
+ninja -C build
+sudo checkinstall --fstrans=no -yD --pkgname=libwacom --pkgversion=1.9 ninja -C build install
 sudo dpkg -i libwacom_1.9-1_amd64.deb
