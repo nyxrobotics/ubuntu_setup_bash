@@ -5,7 +5,7 @@ alias cc="gcc-12"
 sudo apt-mark unhold \
 cuda \
 cuda-drivers \
-cuda-drivers-550 \
+cuda-drivers-535 \
 cuda-toolkit-config-common \
 nvidia-modprobe \
 nvidia-settings \
@@ -41,52 +41,52 @@ cuda-nvcc-11-8 \
 cuda-11-8=11.8.0-1 \
 cuda-runtime-11-8=11.8.0-1 \
 cuda-demo-suite-11-8=11.8.86-1 \
-cuda-drivers=550.90.07-1 \
-cuda-drivers-550=550.90.07-1 \
+cuda-drivers=535.183.01-1 \
+cuda-drivers-535=535.183.01-1 \
 cuda-toolkit-config-common=11.8.89-1 \
 cuda-toolkit-11-config-common=11.8.89-1 \
-libnvidia-cfg1-550=550.90.07-0ubuntu1 \
-libnvidia-common-550=550.90.07-0ubuntu1 \
-libnvidia-compute-550=550.90.07-0ubuntu1 \
-libnvidia-decode-550=550.90.07-0ubuntu1 \
-libnvidia-encode-550=550.90.07-0ubuntu1 \
-libnvidia-extra-550=550.90.07-0ubuntu1 \
-libnvidia-fbc1-550=550.90.07-0ubuntu1 \
-libnvidia-gl-550=550.90.07-0ubuntu1 \
-nvidia-compute-utils-550=550.90.07-0ubuntu1 \
-nvidia-dkms-550=550.90.07-0ubuntu1 \
-nvidia-driver-550=550.90.07-0ubuntu1 \
-nvidia-kernel-common-550=550.90.07-0ubuntu1 \
-nvidia-kernel-source-550=550.90.07-0ubuntu1 \
-nvidia-modprobe=550.90.07-0ubuntu1 \
-nvidia-settings=550.90.07-0ubuntu1 \
-nvidia-utils-550=550.90.07-0ubuntu1 \
-xserver-xorg-video-nvidia-550=550.90.07-0ubuntu1 \
-libxnvctrl0=550.90.07-0ubuntu1
+libnvidia-cfg1-535=535.183.01-0ubuntu1 \
+libnvidia-common-535=535.183.01-0ubuntu1 \
+libnvidia-compute-535=535.183.01-0ubuntu1 \
+libnvidia-decode-535=535.183.01-0ubuntu1 \
+libnvidia-encode-535=535.183.01-0ubuntu1 \
+libnvidia-extra-535=535.183.01-0ubuntu1 \
+libnvidia-fbc1-535=535.183.01-0ubuntu1 \
+libnvidia-gl-535=535.183.01-0ubuntu1 \
+nvidia-compute-utils-535=535.183.01-0ubuntu1 \
+nvidia-dkms-535=535.183.01-0ubuntu1 \
+nvidia-driver-535=535.183.01-0ubuntu1 \
+nvidia-kernel-common-535=535.183.01-0ubuntu1 \
+nvidia-kernel-source-535=535.183.01-0ubuntu1 \
+nvidia-modprobe=535.183.01-0ubuntu1 \
+nvidia-settings=535.183.01-0ubuntu1 \
+nvidia-utils-535=535.183.01-0ubuntu1 \
+xserver-xorg-video-nvidia-535=535.183.01-0ubuntu1 \
+libxnvctrl0=535.183.01-0ubuntu1
 
 sudo apt-mark hold \
 cuda \
 cuda-drivers \
-cuda-drivers-550 \
+cuda-drivers-535 \
 cuda-toolkit-config-common \
 cuda-toolkit-11-config-common \
-libnvidia-cfg1-550 \
-libnvidia-common-550 \
-libnvidia-compute-550 \
-libnvidia-decode-550 \
-libnvidia-encode-550 \
-libnvidia-extra-550 \
-libnvidia-fbc1-550 \
-libnvidia-gl-550 \
-nvidia-compute-utils-550 \
-nvidia-dkms-550 \
-nvidia-driver-550 \
-nvidia-kernel-common-550 \
-nvidia-kernel-source-550 \
+libnvidia-cfg1-535 \
+libnvidia-common-535 \
+libnvidia-compute-535 \
+libnvidia-decode-535 \
+libnvidia-encode-535 \
+libnvidia-extra-535 \
+libnvidia-fbc1-535 \
+libnvidia-gl-535 \
+nvidia-compute-utils-535 \
+nvidia-dkms-535 \
+nvidia-driver-535 \
+nvidia-kernel-common-535 \
+nvidia-kernel-source-535 \
 nvidia-modprobe \
 nvidia-settings \
-nvidia-utils-550 \
-xserver-xorg-video-nvidia-550 \
+nvidia-utils-535 \
+xserver-xorg-video-nvidia-535 \
 libxnvctrl0
 
 if ! grep -Fxq "## CUDA and cuDNN paths" ~/.bashrc
