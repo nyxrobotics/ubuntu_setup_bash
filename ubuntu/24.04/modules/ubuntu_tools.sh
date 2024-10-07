@@ -45,7 +45,6 @@ sudo apt install -y gnome-tweak-tool gparted guvcview
 # Reference: https://mackro.blog.jp/archives/6545568.html
 sudo apt install heif-gdk-pixbuf heif-thumbnailer
 # Reference: https://ubuntuhandbook.org/index.php/2022/05/enable-webp-support-ubuntu-2204/
-sudo add-apt-repository ppa:ubuntuhandbook1/webp-pixbuf-loader
 # Reference: https://moebuntu.blog.fc2.com/blog-entry-1533.html?sp
 sudo add-apt-repository ppa:ubuntuhandbook1/gimp
-sudo apt install -y webp webp-pixbuf-loader gimp gegl
+sudo apt install -y gimp gegl
