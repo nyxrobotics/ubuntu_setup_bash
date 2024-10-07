@@ -7,6 +7,10 @@ WALLPAPER_DIR=$(pwd)
 #echo -e ¨$WALLPAPER_DIR/black.png¨
 gsettings set org.gnome.desktop.background picture-uri "file://$WALLPAPER_DIR/black.png"
 
-#disable trash icon
-gsettings set org.gnome.nautilus.desktop trash-icon-visible false
-#gsettings set org.gnome.shell.extensions.desktop-icons show-home false
+### Disable desktop icons
+### Reference: https://askubuntu.com/questions/1335398/ubuntu-21-04-remove-trash-user-and-drive-icon-from-desktop
+gsettings set org.gnome.desktop.background show-desktop-icons false
+gsettings set org.gnome.shell.extensions.ding show-trash false
+gsettings set org.gnome.shell.extensions.ding show-home false
+gsettings set org.gnome.shell.extensions.ding show-volumes false
+gsettings set org.gtk.Settings.FileChooser show-hidden true
