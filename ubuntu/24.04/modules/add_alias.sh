@@ -47,6 +47,22 @@ function colcon_cd() {
     return 1
 }
 
+# colcon_build: Move to the workspace root and run colcon build
+function colcon_build() {
+    # Save the current directory
+    local current_dir=$(pwd)
+
+    # Move to the workspace root
+    colcon_cd
+
+    # Run colcon build in the workspace root
+    echo "Running colcon build in workspace root..."
+    colcon build
+
+    # Return to the original directory
+    cd "$current_dir"
+}
+
 # colcon_clean: Cleans up build, install, and log directories for colcon workspaces
 function colcon_clean() {
     # Save the current directory
@@ -83,7 +99,6 @@ function colcon_clean() {
     # Return to the original directory
     cd "$current_dir"
 }
-
 
 # update_rosdep: Updates rosdep and installs dependencies
 function update_rosdep() {
