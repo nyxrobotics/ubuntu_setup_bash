@@ -11,14 +11,42 @@ alias yamlfix="yamlfixer --recurse -1 ."
 alias xmlfix="find . -maxdepth 3 -type f -name \"*.xml\" -o -name \"*.launch\" | xargs -I '{}' xmllint --format '{}' -output '{}'"
 alias hooks_disable="git config --global core.hooksPath no-hooks"
 alias hooks_enable="git config --global --unset core.hooksPath"
-alias update_rosdep="catkin source;roscd;cd ..;rosdep install --from-paths src --ignore-src -r -y"
-function update_rosinstall() {
-    source $(catkin locate --shell-verbs)
-    catkin source
-    roscd
-    cd ../src
+function colcon_source() {
+    # Search for 'install/setup.bash' by moving up the directory hierarchy from the current directory
+    local dir=$(pwd)
+    while [ "$dir" != "/" ]; do
+        if [ -f "$dir/install/setup.bash" ]; then
+            echo "Sourcing $dir/install/setup.bash"
+            source "$dir/install/setup.bash"
+            return 0
+        fi
+        dir=$(dirname "$dir")
+    done
 
-    # Files to ignore, including robotis pattern
+    echo "Error: Could not find install/setup.bash in any parent directory."
+    return 1
+}
+function update_rosdep() {
+    # Source the workspace
+    colcon_source
+
+    # Check if rosdep is initialized, if not initialize it
+    if ! rosdep check >/dev/null 2>&1; then
+        echo "rosdep is not initialized. Running 'sudo rosdep init'..."
+        sudo rosdep init
+    fi
+
+    # Update rosdep and install dependencies
+    rosdep update
+    rosdep install --from-paths src --ignore-src -r -y
+}
+function update_rosinstall() {
+    # Source the colcon workspace
+    colcon_source
+
+    cd src
+
+    # Ignore certain files during update
     ignore_pattern="(\./eband_local_planner/.*\.rosinstall|\./moveit/.*\.rosinstall|\./robotis/.*\.rosinstall)"
     
     # Get all .rosinstall files
