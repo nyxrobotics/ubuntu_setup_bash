@@ -57,8 +57,7 @@ function colcon_build() {
 
     # Run colcon build in the workspace root
     echo "Running colcon build in workspace root..."
-    colcon build
-
+    colcon build --symlink-install --continue-on-error --parallel-workers $(nproc)
     # Return to the original directory
     cd "$current_dir"
 }
