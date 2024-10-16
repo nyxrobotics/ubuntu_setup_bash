@@ -15,6 +15,20 @@ chomp() {
   printf "%s" "${1/"$'\n'"/}"
 }
 
+# string formatters
+if [[ -t 1 ]]
+then
+  tty_escape() { printf "\033[%sm" "$1"; }
+else
+  tty_escape() { :; }
+fi
+tty_mkbold() { tty_escape "1;$1"; }
+tty_underline="$(tty_escape "4;39")"
+tty_blue="$(tty_mkbold 34)"
+tty_red="$(tty_mkbold 31)"
+tty_bold="$(tty_mkbold 39)"
+tty_reset="$(tty_escape 0)"
+
 ohai() {
   printf "${tty_blue}==>${tty_bold} %s${tty_reset}\n" "$(shell_join "$@")"
 }
@@ -72,20 +86,6 @@ do
       ;;
   esac
 done
-
-# string formatters
-if [[ -t 1 ]]
-then
-  tty_escape() { printf "\033[%sm" "$1"; }
-else
-  tty_escape() { :; }
-fi
-tty_mkbold() { tty_escape "1;$1"; }
-tty_underline="$(tty_escape "4;39")"
-tty_blue="$(tty_mkbold 34)"
-tty_red="$(tty_mkbold 31)"
-tty_bold="$(tty_mkbold 39)"
-tty_reset="$(tty_escape 0)"
 
 shell_join() {
   local arg
@@ -171,7 +171,7 @@ else
   UNAME_MACHINE="$(uname -m)"
 
   # On Linux, this script installs to /home/linuxbrew/.linuxbrew only
-  HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
+  HOMEBREW_PREFIX="/home/${USER}/.linuxbrew"
   HOMEBREW_REPOSITORY="${HOMEBREW_PREFIX}/Homebrew"
   HOMEBREW_CACHE="${HOME}/.cache/Homebrew"
 
@@ -481,7 +481,7 @@ cd "/usr" || exit 1
 
 # shellcheck disable=SC2016
 ohai 'Checking for `sudo` access (which may request your password)...'
-
+mkdir -p ${HOMEBREW_PREFIX}
 if [[ -n "${HOMEBREW_ON_MACOS-}" ]]
 then
   [[ "${EUID:-${UID}}" == "0" ]] || have_sudo_access
