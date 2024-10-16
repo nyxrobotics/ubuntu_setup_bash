@@ -11,6 +11,18 @@ abort() {
   exit 1
 }
 
+chomp() {
+  printf "%s" "${1/"$'\n'"/}"
+}
+
+ohai() {
+  printf "${tty_blue}==>${tty_bold} %s${tty_reset}\n" "$(shell_join "$@")"
+}
+
+warn() {
+  printf "${tty_red}Warning${tty_reset}: %s\n" "$(chomp "$1")" >&2
+}
+
 # Fail fast with a concise message when not using bash
 # Single brackets are needed here for POSIX compatibility
 # shellcheck disable=SC2292
@@ -84,18 +96,6 @@ shell_join() {
     printf " "
     printf "%s" "${arg// /\ }"
   done
-}
-
-chomp() {
-  printf "%s" "${1/"$'\n'"/}"
-}
-
-ohai() {
-  printf "${tty_blue}==>${tty_bold} %s${tty_reset}\n" "$(shell_join "$@")"
-}
-
-warn() {
-  printf "${tty_red}Warning${tty_reset}: %s\n" "$(chomp "$1")" >&2
 }
 
 # Check if script is run non-interactively (e.g. CI)
