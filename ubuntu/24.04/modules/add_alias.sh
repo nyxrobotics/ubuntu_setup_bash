@@ -102,6 +102,8 @@ function colcon_clean() {
         echo "No log/ directory found"
     fi
 
+    unset AMENT_PREFIX_PATH
+    unset CMAKE_PREFIX_PATH
     echo "Colcon workspace cleaned."
 
     # Return to the original directory
