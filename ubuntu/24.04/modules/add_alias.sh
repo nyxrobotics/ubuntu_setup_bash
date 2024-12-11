@@ -55,9 +55,18 @@ function colcon_build() {
     # Move to the workspace root
     colcon_cd
 
+    # Calculate parallel workers
+    local num_procs=$(nproc)
+    local mem_free_gb=$(awk '/MemAvailable/ {print $2 / 1024 / 1024}' /proc/meminfo)
+    local max_workers=$(awk -v procs=$num_procs -v mem=$mem_free_gb 'BEGIN {
+        workers = (procs / 2.0) < (mem / 2.0) ? (procs / 2.0) : (mem / 2.0);
+        print workers < 1 ? 1 : int(workers);
+    }')
+
     # Run colcon build in the workspace root
-    echo "Running colcon build in workspace root..."
-    colcon build --symlink-install --continue-on-error --parallel-workers $(nproc)
+    echo "Running colcon build in workspace root with $max_workers parallel workers..."
+    colcon build --symlink-install --continue-on-error --parallel-workers $max_workers
+
     # Return to the original directory
     cd "$current_dir"
 }
