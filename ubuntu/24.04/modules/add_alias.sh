@@ -15,6 +15,7 @@ alias catkin="colcon"
 
 function colcon_source() {
     # Search for 'install/setup.bash' by moving up the directory hierarchy from the current directory
+    source /usr/bin/ros_local_setup.bash
     local dir=$(pwd)
     while [ "$dir" != "/" ]; do
         if [ -f "$dir/install/setup.bash" ]; then
