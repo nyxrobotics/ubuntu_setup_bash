@@ -6,9 +6,9 @@ cd $SCRIPT_DIR
 sudo apt install -y unattended-upgrades
 sudo cp ../config/20auto-upgrades /etc/apt/apt.conf.d/20auto-upgrades
 sudo /etc/init.d/unattended-upgrades restart
-# >>>Disable update scheduler on Ubuntu 18.04
-sudo systemctl disable apt-daily.service apt-daily-upgrade.service
-sudo systemctl disable apt-daily.timer apt-daily-upgrade.timer
+sudo systemctl stop --now unattended-upgrades apt-daily.service apt-daily.timer apt-daily-upgrade.timer apt-daily-upgrade.service
+sudo systemctl disable --now unattended-upgrades apt-daily.service apt-daily.timer apt-daily-upgrade.timer apt-daily-upgrade.service
+sudo systemctl daemon-reload
 # >>>Disable update-notifier (GUI popup)
 sudo cp ../config/10periodic /etc/apt/apt.conf.d/10periodic
 sudo cp ../config/99update-notifier /etc/apt/apt.conf.d/99update-notifier
