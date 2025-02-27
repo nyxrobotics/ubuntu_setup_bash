@@ -177,6 +177,47 @@ function update_rosinstall() {
     cd "$current_dir"
 }
 
+# update_vcs_repos: Updates .repos files and imports repositories
+function update_vcs_repos() {
+    # Save the current directory
+    local current_dir=$(pwd)
+
+    # Move to the workspace root
+    colcon_cd
+
+    cd src
+
+    # Ignore certain files during update
+    ignore_pattern="(\./eband_local_planner/.*\.repos|\./moveit/.*\.repos|\./robotis/.*\.repos)"
+    
+    # Get all .repos files
+    files=$(find . -type f -regextype posix-egrep -regex "\./.+\.repos" | sort)
+    pre_n=0
+    n=$(echo ${files} | wc -w)
+
+    while [ ${n} -ne ${pre_n} ]; do
+        # Filter out the ignored files
+        filtered_files=$(echo "${files}" | grep -Ev "${ignore_pattern}")
+        
+        # If no files are left after filtering, break the loop
+        if [ -z "$filtered_files" ]; then
+            break
+        fi
+
+        for f in ${filtered_files}; do
+            echo "Processing ${f}"
+            vcs import --skip-existing --recursive --debug < ${f}
+        done
+        
+        # Update the file list and counts for the next iteration
+        files=$(find . -type f -regextype posix-egrep -regex "\./.+\.repos" | sort)
+        pre_n=${n}
+        n=$(echo ${files} | wc -w)
+    done
+
+    # Return to the original directory
+    cd "$current_dir"
+}
 EOF
 )
 
