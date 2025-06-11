@@ -5,6 +5,9 @@ cd $SCRIPT_DIR
 # >>>Grub setting
 # sudo cp ../config/grub_samples/gs43vr /etc/default/grub
 # sudo update-grub
+# >>> Disable update
+sudo systemctl disable --now unattended-upgrades
+sudo systemctl stop unattended-upgrades
 # >>> Disable animation
 gsettings set org.gnome.desktop.interface enable-animations false
 # >>>Fix "Failed to fetch" error
@@ -40,7 +43,6 @@ killall ibus-daemon
 ibus-daemon -d -x &
 # >>>Install tools
 sudo apt install -y gnome-tweak-tool gparted guvcview
-
 # >>>Install gimp
 # Reference: https://mackro.blog.jp/archives/6545568.html
 sudo apt install heif-gdk-pixbuf heif-thumbnailer
