@@ -5,12 +5,6 @@ cd $SCRIPT_DIR
 # >>>Grub setting
 # sudo cp ../config/grub_samples/gs43vr /etc/default/grub
 # sudo update-grub
-# >>> Disable update
-sudo systemctl disable --now unattended-upgrades
-sudo systemctl stop unattended-upgrades
-gsettings set com.ubuntu.update-notifier hide-reboot-notification true
-gconftool -s --type bool /apps/update-notifier/auto_launch false
-sudo mv /etc/xdg/autostart/update-notifier.desktop /etc/xdg/autostart/update-notifier.desktop.back
 # >>> Disable animation
 gsettings set org.gnome.desktop.interface enable-animations false
 # >>>Fix "Failed to fetch" error
