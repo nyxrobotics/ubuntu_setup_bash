@@ -5,6 +5,8 @@ alias cc="gcc-12"
 sudo apt-mark unhold \
 cuda* \
 nvidia* \
+libnvidia* \
+xserver-xorg-video-nvidia* \
 libxnvctrl*
 
 #sudo aptitude purge ~ncuda
@@ -33,53 +35,57 @@ cuda-compiler-12-8 \
 cuda-nvcc-12-8 \
 cuda-12-8=12.8.0-1 \
 cuda-runtime-12-8=12.8.0-1 \
-cuda-demo-suite-12-8=12.8.86-1 \
-cuda-drivers=535.183.01-1 \
-cuda-drivers-535=535.183.01-1 \
-cuda-toolkit-config-common=12.8.89-1 \
-cuda-toolkit-11-config-common=12.8.89-1 \
-libnvidia-cfg1-535=535.183.01-0ubuntu1 \
-libnvidia-common-535=535.183.01-0ubuntu1 \
-libnvidia-compute-535=535.183.01-0ubuntu1 \
-libnvidia-decode-535=535.183.01-0ubuntu1 \
-libnvidia-encode-535=535.183.01-0ubuntu1 \
-libnvidia-extra-535=535.183.01-0ubuntu1 \
-libnvidia-fbc1-535=535.183.01-0ubuntu1 \
-libnvidia-gl-535=535.183.01-0ubuntu1 \
-nvidia-compute-utils-535=535.183.01-0ubuntu1 \
-nvidia-dkms-535=535.183.01-0ubuntu1 \
-nvidia-driver-535=535.183.01-0ubuntu1 \
-nvidia-kernel-common-535=535.183.01-0ubuntu1 \
-nvidia-kernel-source-535=535.183.01-0ubuntu1 \
-nvidia-modprobe=535.183.01-0ubuntu1 \
-nvidia-settings=535.183.01-0ubuntu1 \
-nvidia-utils-535=535.183.01-0ubuntu1 \
-xserver-xorg-video-nvidia-535=535.183.01-0ubuntu1 \
-libxnvctrl0=535.183.01-0ubuntu1
+cuda-demo-suite-12-8=12.8.90-1 \
+cuda-toolkit-config-common=12.8.90-1 \
+cuda-toolkit-12-8-config-common=12.8.90-1 \
+libnvidia-cfg1-570=570.86.10-0ubuntu1 \
+libnvidia-common-570=570.86.10-0ubuntu1 \
+libnvidia-compute-570=570.86.10-0ubuntu1 \
+libnvidia-decode-570=570.86.10-0ubuntu1 \
+libnvidia-encode-570=570.86.10-0ubuntu1 \
+libnvidia-extra-570=570.86.10-0ubuntu1 \
+libnvidia-fbc1-570=570.86.10-0ubuntu1 \
+libnvidia-gl-570=570.86.10-0ubuntu1 \
+nvidia-compute-utils-570=570.86.10-0ubuntu1 \
+nvidia-dkms-570-open=570.86.10-0ubuntu1 \
+nvidia-driver-570-open=570.86.10-0ubuntu1 \
+nvidia-kernel-common-570=570.86.10-0ubuntu1 \
+nvidia-kernel-source-570-open=570.86.10-0ubuntu1 \
+nvidia-modprobe=570.86.10-0ubuntu1 \
+nvidia-open=570.86.10-0ubuntu1 \
+nvidia-settings=570.86.10-0ubuntu1 \
+nvidia-utils-570=570.86.10-0ubuntu1 \
+xserver-xorg-video-nvidia-570=570.86.10-0ubuntu1 \
+libxnvctrl0=570.86.10-0ubuntu1
 
 sudo apt-mark hold \
 cuda \
-cuda-drivers \
-cuda-drivers-535 \
+cuda-toolkit-12-8 \
+cuda-compiler-12-8 \
+cuda-nvcc-12-8 \
+cuda-12-8 \
+cuda-runtime-12-8 \
+cuda-demo-suite-12-8 \
 cuda-toolkit-config-common \
-cuda-toolkit-11-config-common \
-libnvidia-cfg1-535 \
-libnvidia-common-535 \
-libnvidia-compute-535 \
-libnvidia-decode-535 \
-libnvidia-encode-535 \
-libnvidia-extra-535 \
-libnvidia-fbc1-535 \
-libnvidia-gl-535 \
-nvidia-compute-utils-535 \
-nvidia-dkms-535 \
-nvidia-driver-535 \
-nvidia-kernel-common-535 \
-nvidia-kernel-source-535 \
+cuda-toolkit-12-8-config-common \
+libnvidia-cfg1-570 \
+libnvidia-common-570 \
+libnvidia-compute-570 \
+libnvidia-decode-570 \
+libnvidia-encode-570 \
+libnvidia-extra-570 \
+libnvidia-fbc1-570 \
+libnvidia-gl-570 \
+nvidia-compute-utils-570 \
+nvidia-dkms-570-open \
+nvidia-driver-570-open \
+nvidia-kernel-common-570 \
+nvidia-kernel-source-570-open \
 nvidia-modprobe \
+nvidia-open \
 nvidia-settings \
-nvidia-utils-535 \
-xserver-xorg-video-nvidia-535 \
+nvidia-utils-570 \
+xserver-xorg-video-nvidia-570 \
 libxnvctrl0
 
 if ! grep -Fxq "## CUDA and cuDNN paths" ~/.bashrc
