@@ -1,6 +1,6 @@
 #!/bin/bash
 
-alias cc="gcc-12"
+alias cc="gcc-11"
 
 # Rermove nvidia packages
 sudo apt-mark unhold \
