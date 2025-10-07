@@ -30,33 +30,33 @@ sudo apt update
 
 sudo apt install -y --allow-downgrades \
 cuda=12.8.0-1 \
-cuda-toolkit-12-8 \
-cuda-compiler-12-8 \
-cuda-nvcc-12-8 \
+cuda-toolkit-12-8=12.8.0-1 \
+cuda-compiler-12-8=12.8.0-1 \
+cuda-nvcc-12-8=12.8.61-1 \
 cuda-12-8=12.8.0-1 \
 cuda-runtime-12-8=12.8.0-1 \
 cuda-demo-suite-12-8=12.8.90-1 \
 cuda-toolkit-config-common=12.8.90-1 \
 cuda-toolkit-12-8-config-common=12.8.90-1 \
-libnvidia-cfg1-570=570.86.10-0ubuntu1 \
-libnvidia-common-570=570.86.10-0ubuntu1 \
-libnvidia-compute-570=570.86.10-0ubuntu1 \
-libnvidia-decode-570=570.86.10-0ubuntu1 \
-libnvidia-encode-570=570.86.10-0ubuntu1 \
-libnvidia-extra-570=570.86.10-0ubuntu1 \
-libnvidia-fbc1-570=570.86.10-0ubuntu1 \
-libnvidia-gl-570=570.86.10-0ubuntu1 \
-nvidia-compute-utils-570=570.86.10-0ubuntu1 \
-nvidia-dkms-570-open=570.86.10-0ubuntu1 \
-nvidia-driver-570-open=570.86.10-0ubuntu1 \
-nvidia-kernel-common-570=570.86.10-0ubuntu1 \
-nvidia-kernel-source-570-open=570.86.10-0ubuntu1 \
-nvidia-modprobe=570.86.10-0ubuntu1 \
-nvidia-open=570.86.10-0ubuntu1 \
-nvidia-settings=570.86.10-0ubuntu1 \
-nvidia-utils-570=570.86.10-0ubuntu1 \
-xserver-xorg-video-nvidia-570=570.86.10-0ubuntu1 \
-libxnvctrl0=570.86.10-0ubuntu1
+libnvidia-cfg1-570=570.133.20-0ubuntu1 \
+libnvidia-common-570=570.133.20-0ubuntu1 \
+libnvidia-compute-570=570.133.20-0ubuntu1 \
+libnvidia-decode-570=570.133.20-0ubuntu1 \
+libnvidia-encode-570=570.133.20-0ubuntu1 \
+libnvidia-extra-570=570.133.20-0ubuntu1 \
+libnvidia-fbc1-570=570.133.20-0ubuntu1 \
+libnvidia-gl-570=570.133.20-0ubuntu1 \
+nvidia-compute-utils-570=570.133.20-0ubuntu1 \
+nvidia-dkms-570-open=570.133.20-0ubuntu1 \
+nvidia-driver-570-open=570.133.20-0ubuntu1 \
+nvidia-kernel-common-570=570.133.20-0ubuntu1 \
+nvidia-kernel-source-570-open=570.133.20-0ubuntu1 \
+nvidia-modprobe=570.133.20-0ubuntu1 \
+nvidia-open=570.133.20-0ubuntu1 \
+nvidia-settings=570.133.20-0ubuntu1 \
+nvidia-utils-570=570.133.20-0ubuntu1 \
+xserver-xorg-video-nvidia-570=570.133.20-0ubuntu1 \
+libxnvctrl0=570.133.20-0ubuntu1
 
 sudo apt-mark hold \
 cuda \
