@@ -16,8 +16,11 @@ rosdep install --from-paths src --ignore-src -y --skip-keys "fastcdr rti-connext
 if ! grep -Fxq "## ROS2 Humble paths" ~/.bashrc
 then
     echo -e "\n## ROS2 Humble paths"  >> ~/.bashrc
+    echo 'source /opt/ros/humble/local_setup.sh' >> ~/.bashrc
     echo 'export ROS_DISTRO=humble' >> ~/.bashrc
     echo 'export RMW_IMPLEMENTATION=rmw_fastrtps_cpp' >> ~/.bashrc
     echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/nyx/anaconda3/envs/env_isaaclab/lib/python3.11/site-packages/isaacsim/exts/isaacsim.ros2.bridge/humble/lib' >> ~/.bashrc
     source ~/.bashrc # reload .bashrc with cuda path
 fi
+
+sudo apt install ros-humble-desktop-full
