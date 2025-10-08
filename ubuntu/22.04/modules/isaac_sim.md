@@ -1,6 +1,9 @@
 # Setup isaac sim
 - Reference: [Installation using Isaac Sim Pip Package](https://isaac-sim.github.io/IsaacLab/main/source/setup/installation/pip_installation.html)
 
+# Install dependency
+```sudo apt install libgl1 libglu1-mesa-dev```
+
 # Install anaconda
 ```bash
 mkdir -p ~/lib/anaconda; cd ~/lib/anaconda
