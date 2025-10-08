@@ -52,3 +52,6 @@ then
     echo 'export LD_LIBRARY_PATH=/usr/local/cuda-12.8/lib64:${LD_LIBRARY_PATH}' >> ~/.bashrc
     source ~/.bashrc # reload .bashrc with cuda path
 fi
+
+# Reinstall mouse and keyboard input
+sudo apt install xserver-xorg-input-all --reinstall

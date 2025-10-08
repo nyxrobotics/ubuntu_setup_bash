@@ -19,7 +19,7 @@ fi
 ```
 - Do you accept the license terms? [yes|no] >>> `yes`
 - Press ENTER to confirm the location >>> ENTER
-- You can undo this by running `conda init --reverse $SHELL`? [yes|no] >>> `no`
+- You can undo this by running `conda init --reverse $SHELL`? [yes|no] >>> `yes`
 
 # Disable Conda base startup
 ```conda config --set auto_activate_base false #Disable conda autostart (base)```
