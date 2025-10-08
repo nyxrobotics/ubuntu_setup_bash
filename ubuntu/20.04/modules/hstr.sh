@@ -10,5 +10,5 @@ sudo apt install hstr
 if ! grep -Fxq "# HSTR configuration - add this to ~/.bashrc" ~/.bashrc
 then
     hstr --show-configuration >> ~/.bashrc
-    source ~/.bashrc # reload .bashrc with cuda path
+    source ~/.bashrc # reload .bashrc
 fi
