@@ -3,12 +3,6 @@
 SCRIPT_DIR=$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)
 cd $SCRIPT_DIR
 
-# >>> Disable update
-sudo apt purge -y update-notifier update-notifier-common
-sudo systemctl disable --now unattended-upgrades
-sudo systemctl stop unattended-upgrades
-gsettings set com.ubuntu.update-notifier hide-reboot-notification true
-
 # >>> Disable animation
 gsettings set org.gnome.desktop.interface enable-animations false
 
@@ -67,13 +61,3 @@ sudo apt install -y heif-gdk-pixbuf heif-thumbnailer
 # Reference: https://moebuntu.blog.fc2.com/blog-entry-1533.html?sp
 sudo add-apt-repository -y ppa:ubuntuhandbook1/gimp
 sudo apt install -y gimp gegl
-
-# >>>Dark Theme
-gsettings set org.gnome.desktop.interface gtk-theme Yaru-dark
-gsettings set org.gnome.desktop.interface color-scheme prefer-dark
-gsettings reset org.gnome.shell.ubuntu color-scheme
-# >>>Light Theme
-#gsettings set org.gnome.desktop.interface gtk-theme Yaru
-#gsettings set org.gnome.desktop.interface color-scheme prefer-light
-#gsettings reset org.gnome.shell.ubuntu color-scheme
-

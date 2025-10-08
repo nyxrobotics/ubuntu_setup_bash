@@ -48,5 +48,3 @@ sudo add-apt-repository ppa:ubuntuhandbook1/webp-pixbuf-loader
 # Reference: https://moebuntu.blog.fc2.com/blog-entry-1533.html?sp
 sudo add-apt-repository ppa:ubuntuhandbook1/gimp
 sudo apt install -y webp webp-pixbuf-loader gimp gegl
-# Disable pro message (Reference:https://askubuntu.com/questions/1452299/im-getting-the-message-the-following-security-updates-require-ubuntu-pro-with)
-sudo dpkg-divert --divert /etc/apt/apt.conf.d/20apt-esm-hook.conf.bak --rename --local /etc/apt/apt.conf.d/20apt-esm-hook.conf

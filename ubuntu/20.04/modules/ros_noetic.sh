@@ -12,6 +12,7 @@ export LIBGL_ALWAYS_SOFTWARE=1
 export __NV_PRIME_RENDER_OFFLOAD=1
 export __GLX_VENDOR_LIBRARY_NAME=nvidia
 export DISABLE_ROS1_EOL_WARNINGS=1
+export ROSCONSOLE_FORMAT='[${severity}] [${node}]: ${message}'
 EOS
 fi
 
@@ -20,16 +21,14 @@ if ! grep -Fxq "## ROS1 Noetic aliases" ~/.bashrc; then
     cat <<'EOS' >> ~/.bashrc
 
 ## ROS1 Noetic aliases
-export ROSCONSOLE_FORMAT='[${severity}] [${node}]: ${message}'
 alias killr='ps aux | grep ros | grep -v grep | awk '\''{ print "kill -9", $2 }'\'' | sh && killall -9 roscore && killall -9 rosmaster && killall -9 rosout && killall -9 rviz'
-alias killg="killall gzclient; killall gzserver; killall rosmaster; ps aux | grep ros | grep -v grep | awk '{ print \"kill -9\", \$2 }' | sh; ps aux | grep gazebo | grep -v grep | awk '{ print \"kill -9\", \$2 }' | sh"
+alias killg="killall gzclient; killall gzserver; killall rosmaster; ps aux | grep ros | grep -v grep | awk '{ print \"kill -9\", \$2 }' | sh;ps aux | grep gazebo | grep -v grep | awk '{ print \"kill -9\", \$2 }' | sh"
 alias killb="ps aux | grep blender | grep -v grep | awk '{ print \"kill -9\", \$2 }' | sh"
 alias yamlfix="yamlfixer --recurse -1 ."
-alias xmlfix='find . -maxdepth 3 -type f \( -name "*.xml" -o -name "*.launch" \) -print0 | xargs -0 -I "{}" xmllint --format "{}" -output "{}"'
+alias xmlfix="find . -maxdepth 3 -type f -name \"*.xml\" -o -name \"*.launch\" | xargs -I '{}' xmllint --format '{}' -output '{}'"
 alias hooks_disable="git config --global core.hooksPath no-hooks"
 alias hooks_enable="git config --global --unset core.hooksPath"
-alias update_rosdep="catkin source; roscd; cd ..; rosdep install --from-paths src --ignore-src -r -y"
-
+alias update_rosdep="catkin source;roscd;cd ..;rosdep install --from-paths src --ignore-src -r -y"
 function update_rosinstall() {
     source $(catkin locate --shell-verbs)
     catkin source
@@ -38,7 +37,7 @@ function update_rosinstall() {
 
     # Files to ignore, including robotis pattern
     ignore_pattern="(\./eband_local_planner/.*\.rosinstall|\./moveit/.*\.rosinstall|\./robotis/.*\.rosinstall)"
-
+    
     # Get all .rosinstall files
     files=$(find . -type f -regextype posix-egrep -regex "\./.+\.rosinstall" | sort)
     pre_n=0
@@ -47,7 +46,7 @@ function update_rosinstall() {
     while [ ${n} -ne ${pre_n} ]; do
         # Filter out the ignored files
         filtered_files=$(echo "${files}" | grep -Ev "${ignore_pattern}")
-
+        
         # If no files are left after filtering, break the loop
         if [ -z "$filtered_files" ]; then
             break
@@ -57,7 +56,7 @@ function update_rosinstall() {
             echo "Processing ${f}"
             vcs import --skip-existing --recursive --debug < ${f}
         done
-
+        
         # Update the file list and counts for the next iteration
         files=$(find . -type f -regextype posix-egrep -regex "\./.+\.rosinstall" | sort)
         pre_n=${n}
