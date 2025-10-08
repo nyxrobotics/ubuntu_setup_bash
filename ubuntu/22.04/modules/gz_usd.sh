@@ -51,11 +51,13 @@ make
 sudo checkinstall --pkgname=gz-usd --pkgversion=0fortress -y
 
 # Add path
-if ! grep -Fxq "## gz_usd paths" ~/.bashrc
-then
-    echo -e "\n## gz_usd paths"  >> ~/.bashrc
-    echo 'export PATH=$USD_PATH/bin:$PATH' >> ~/.bashrc
-    echo 'export LD_LIBRARY_PATH=$USD_PATH/lib:$LD_LIBRARY_PATH' >> ~/.bashrc
-    echo 'export CMAKE_PREFIX_PATH=$USD_PATH:$CMAKE_PREFIX_PATH' >> ~/.bashrc
-    source ~/.bashrc
+if ! grep -Fxq "## gz_usd paths" ~/.bashrc; then
+  {
+    echo
+    echo "## gz_usd paths"
+    echo "export PATH=\"$USD_PATH/bin:\$PATH\""
+    echo "export LD_LIBRARY_PATH=\"$USD_PATH/lib:\$LD_LIBRARY_PATH\""
+    echo "export CMAKE_PREFIX_PATH=\"$USD_PATH;$GZ_CMAKE_PATH:\$CMAKE_PREFIX_PATH\""
+  } >> ~/.bashrc
+  source ~/.bashrc
 fi
