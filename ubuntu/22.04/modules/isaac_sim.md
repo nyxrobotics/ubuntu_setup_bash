@@ -1,5 +1,5 @@
 # Setup isaac sim
-- Reference: [Installation using Isaac Sim Pip Package](https://isaac-sim.github.io/IsaacLab/main/source/setup/installation/pip_installation.html)
+- Reference: [Isaac Lab 2.1.0 local installation](https://isaac-sim.github.io/IsaacLab/v2.1.0/source/setup/installation/index.html)
 
 # Install dependency
 ```sudo apt install libgl1 libglu1-mesa-dev```
@@ -24,13 +24,27 @@ fi
 # Disable Conda base startup
 ```conda config --set auto_activate_base false #Disable conda autostart (base)```
 
-# Setup
+# Install Isaac Sim
+- Reference: [Robot Simulation (2): Configuring IsaacSim and IsaacLab with RTX 5090 on Ubuntu 24.04](https://blog.csdn.net/qq_45709806/article/details/149648493)
+- Reference: [Isaac Sim 4.5.0 Python Environment Installation](https://isaac-sim.github.io/IsaacLab/v2.1.0/source/setup/installation/pip_installation.html)
+- Reference: [Installation using Isaac Sim Pip Package](https://isaac-sim.github.io/IsaacLab/main/source/setup/installation/pip_installation.html)
+
 ```bash
 mkdir -p ~/lib/isaaclab; cd ~/lib/isaaclab
-conda create -n env_isaaclab python=3.11 -y;conda activate env_isaaclab
+conda install -c conda-forge gcc=12.1.0 #Reference: https://stackoverflow.com/questions/72540359/glibcxx-3-4-30-not-found-for-librosa-in-conda-virtual-environment-after-tryin
+conda create -n env_isaaclab python=3.10 -y;conda activate env_isaaclab
 pip install torch==2.7.0 torchvision==0.22.0 --index-url https://download.pytorch.org/whl/cu128
-pip install "isaacsim[all,extscache]==5.0.0" --extra-index-url https://pypi.nvidia.com
+# For RTX50 Series: pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128
+pip install pyyaml typeguard
+pip install "isaacsim[all,extscache]==4.5.0" --extra-index-url https://pypi.nvidia.com
 ```
+
+# Run Isaac Sim
+```bash
+conda activate env_isaaclab
+isaacsim
+```
+
 # isaac lab
 ```bash
 git clone git@github.com:isaac-sim/IsaacLab.git
