@@ -28,11 +28,11 @@ fi
 sudo dpkg -i cuda-keyring_1.1-1_all.deb
 sudo apt update
 
-sudo apt install -y --allow-downgrades \
+sudo apt install -y --allow-downgrades --allow-change-held-packages \
 cuda=12.8.0-1 \
 cuda-toolkit-12-8=12.8.0-1 \
 cuda-compiler-12-8=12.8.0-1 \
-cuda-nvcc-12-8=12.8.61-1 \
+cuda-nvcc-12-8=12.8.93-1 \
 cuda-12-8=12.8.0-1 \
 cuda-runtime-12-8=12.8.0-1 \
 cuda-demo-suite-12-8=12.8.90-1 \
