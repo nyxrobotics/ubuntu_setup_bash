@@ -36,14 +36,14 @@ cuda-12-8 \
 cuda-toolkit-12-8 \
 cudnn=9.13.1-1 \
 cuda-drivers-570 \
-nvidia-driver-570 \
+nvidia-driver-570-open \
 
 sudo apt-mark hold \
 cuda-12-8 \
 cuda-toolkit-12-8 \
 cudnn \
 cuda-drivers-570 \
-nvidia-driver-570
+nvidia-driver-570-open
 
 if ! grep -Fxq "## CUDA and cuDNN paths" ~/.bashrc
 then
