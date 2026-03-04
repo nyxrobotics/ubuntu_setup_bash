@@ -3,6 +3,7 @@
 
 # Install dependency
 ```sudo apt install libgl1 libglu1-mesa-dev```
+```pip install usd-core```
 
 # Install anaconda
 ```bash
@@ -24,7 +25,9 @@ fi
 # Disable Conda base startup
 ```conda config --set auto_activate_base false #Disable conda autostart (base)```
 
-# Install Isaac Sim
+# Setup isaac lab 2.1.0
+
+### Install Isaac Sim 4.5.0
 - Reference: [Robot Simulation (2): Configuring IsaacSim and IsaacLab with RTX 5090 on Ubuntu 24.04](https://blog.csdn.net/qq_45709806/article/details/149648493)
 - Reference: [Isaac Sim 4.5.0 Python Environment Installation](https://isaac-sim.github.io/IsaacLab/v2.1.0/source/setup/installation/pip_installation.html)
 - Reference: [Installation using Isaac Sim Pip Package](https://isaac-sim.github.io/IsaacLab/main/source/setup/installation/pip_installation.html)
@@ -39,15 +42,58 @@ pip install pyyaml typeguard
 pip install "isaacsim[all,extscache]==4.5.0" --extra-index-url https://pypi.nvidia.com
 ```
 
+### Install isaac lab 2.1.0
+```bash
+git clone git@github.com:nyxrobotics/IsaacLab.git
+git checkout feature/beyond_mimic
+./isaaclab.sh --install
+./isaaclab.sh -i rsl_rl
+pip install torch==2.7.0+cu128 torchvision==0.22.0+cu128 torchaudio==2.7.0+cu128 --index-url https://download.pytorch.org/whl/cu128
+
+# Test
+# ./isaaclab.sh -p scripts/tutorials/00_sim/create_empty.py
+# Show samples
+#  ./isaaclab.sh -p scripts/environments/list_envs.py | grep -i G1
+
+```
+
+# isaac lab 2.3.0
+
+### Install Isaac Sim 5.1.0 (isaac lab 2.3.0)
+- Reference: [Isaac Sim 5.1.0 Python Environment Installation](https://isaac-sim.github.io/IsaacLab/v2.3.0/source/setup/installation/pip_installation.html)
+
+```bash
+mkdir -p ~/lib/isaaclab; cd ~/lib/isaaclab
+conda create -n env_isaaclab python=3.11 -y;conda activate env_isaaclab
+pip install torch==2.7.0+cu128 torchvision==0.22.0+cu128 torchaudio==2.7.0+cu128 --index-url https://download.pytorch.org/whl/cu128
+pip install pyyaml typeguard==4.4.0 typing_extensions==4.12.2 fastapi==0.45.3
+pip install "isaacsim[all,extscache]==5.1.0" --extra-index-url https://pypi.nvidia.com
+```
+
+### Install isaac lab 2.3.0
+```bash
+./isaaclab.sh --install
+./isaaclab.sh -i rsl_rl
+./isaaclab.sh -i skrl
+pip install torch==2.7.0 torchvision==0.22.0 --index-url https://download.pytorch.org/whl/cu128
+```
+
 # Run Isaac Sim
 ```bash
 conda activate env_isaaclab
 isaacsim
 ```
 
-# isaac lab
+
+# Run isaac lab sample
 ```bash
-git clone git@github.com:isaac-sim/IsaacLab.git
+# --headless: without GUI
+# Train
+./isaaclab.sh -p scripts/reinforcement_learning/rsl_rl/train.py --task Isaac-Velocity-Flat-G1-v0 --headless
+./isaaclab.sh -p scripts/reinforcement_learning/rsl_rl/train.py --task Isaac-Velocity-Rough-G1-v0 --headless
+bash isaaclab.sh -p scripts/reinforcement_learning/rsl_rl/train.py --task Isaac-Velocity-Flat-Kuroko-v0 --headless --max_iterations=10000
+# Play
+./isaaclab.sh -p scripts/reinforcement_learning/rsl_rl/play.py --task Isaac-Velocity-Flat-Kuroko-Play-v0 --num_envs 16
 ```
 
 # Remove env_isaaclab
