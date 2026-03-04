@@ -33,7 +33,7 @@ conda config --set auto_activate_base false
 mkdir -p ~/lib/isaaclab; cd ~/lib/isaaclab
 conda install -c conda-forge gcc=12.1.0 #Reference: https://stackoverflow.com/questions/72540359/glibcxx-3-4-30-not-found-for-librosa-in-conda-virtual-environment-after-tryin
 conda create -n env_isaaclab python=3.10 -y;conda activate env_isaaclab
-pip install torch==2.7.0+cu128 torchvision==0.22.0+cu128 torchaudio==2.7.0+cu128 ---index-url https://download.pytorch.org/whl/cu128
+pip install torch==2.7.0+cu128 torchvision==0.22.0+cu128 torchaudio==2.7.0+cu128 --index-url https://download.pytorch.org/whl/cu128
 # For RTX50 Series: pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128
 pip install pyyaml typeguard
 pip install "isaacsim[all,extscache]==4.5.0" --extra-index-url https://pypi.nvidia.com
@@ -69,10 +69,12 @@ pip install "isaacsim[all,extscache]==5.1.0" --extra-index-url https://pypi.nvid
 
 ### Install isaac lab 2.3.0
 ```bash
+git clone -b v2.3.0 git@github.com:isaac-sim/IsaacLab.git
+cd IsaacLab
 ./isaaclab.sh --install
 ./isaaclab.sh -i rsl_rl
 ./isaaclab.sh -i skrl
-pip install torch==2.7.0+cu128 torchvision==0.22.0+cu128 torchaudio==2.7.0+cu128 ---index-url https://download.pytorch.org/whl/cu128
+pip install torch==2.7.0+cu128 torchvision==0.22.0+cu128 torchaudio==2.7.0+cu128 --index-url https://download.pytorch.org/whl/cu128
 ```
 
 # Run Isaac Sim
