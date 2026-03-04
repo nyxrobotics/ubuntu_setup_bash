@@ -5,10 +5,7 @@ alias cc="gcc-12"
 
 # Rermove nvidia packages
 sudo apt-mark unhold cuda* cudnn* nvidia* libnvidia* xserver-xorg-video-nvidia* libxnvctrl*
-sudo apt purge -y --allow-change-held-packages "*cuda*" "*cudnn*" "*nvidia*" "*nsight*" "libcublas*" "libxnvctrl*"
-nvidia* \
-libnvidia* \
-xserver-xorg-video-nvidia* \
+sudo apt purge -y --allow-change-held-packages "*cuda*" "*cudnn*" "*nvidia*" "*nsight*" "libcublas*" "libxnvctrl*" "nvidia*" "libnvidia*" "xserver-xorg-video-nvidia*"
 sudo apt autoremove -y
 sudo apt clean -y
 sudo apt update
