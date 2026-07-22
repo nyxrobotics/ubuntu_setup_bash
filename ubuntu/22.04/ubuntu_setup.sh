@@ -5,6 +5,7 @@ cd $SCRIPT_DIR/modules
 bash hstr.sh
 bash sublimetext3.sh
 bash ubuntu_tools.sh
+bash japanese_input.sh
 # Ubuntu configs
 bash dark_theme.sh
 bash disable_update.sh

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Mozc Hiragana Mode
+Comment=Start Mozc in Hiragana input mode
+Exec=/bin/bash -lc "~/.local/bin/japanese-input --watch"
+OnlyShowIn=GNOME;
+NoDisplay=true
+X-GNOME-Autostart-enabled=true

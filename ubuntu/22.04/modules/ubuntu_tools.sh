@@ -46,11 +46,6 @@ cp -f ../config/custom.conf ../config/custom_tmp.conf
 sed -i 's#username#'"$USER"'#g' ../config/custom_tmp.conf
 sudo mv ../config/custom_tmp.conf /etc/gdm3/custom.conf
 
-# >>>Install Mozc(Japanese input)
-sudo apt install -y ibus-mozc emacs-mozc
-killall ibus-daemon
-ibus-daemon -d -x &
-
 # >>>Install tools
 sudo apt install -y gnome-tweaks gparted guvcview
 
