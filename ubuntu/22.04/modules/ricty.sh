@@ -2,16 +2,16 @@
 
 # >>>ricty
 # install fontforge
-mkdir -p ricty_tmp
 mkdir -p ~/.local/share/fonts/ricty/TrueType/Ricty
 mkdir -p ~/.local/share/fonts/ricty/TrueType/RictyDiscord
-cd ricty_tmp
+temporary_directory=$(mktemp -d)
+trap 'rm -rf "$temporary_directory"' EXIT
+cd "$temporary_directory"
 sudo apt install -y fontforge font-manager
 # Download Inconsolata
-wget http://levien.com/type/myfonts/Inconsolata.otf
+wget -O Inconsolata.otf http://levien.com/type/myfonts/Inconsolata.otf
 # Download Migu
-wget https://osdn.jp/projects/mix-mplus-ipa/downloads/63545/migu-1m-20150712.zip
-if [ $? -e 0 ]; then
+if wget -O migu-1m-20150712.zip https://osdn.jp/projects/mix-mplus-ipa/downloads/63545/migu-1m-20150712.zip; then
   unzip migu-1m-20150712.zip
   mv migu-1m-20150712/migu-1m-regular.ttf .
   mv migu-1m-20150712/migu-1m-bold.ttf .
@@ -28,5 +28,3 @@ bash Ricty/ricty_generator.sh Inconsolata.otf migu-1m-regular.ttf migu-1m-bold.t
 cp -f RictyDiscord*.ttf ~/.local/share/fonts/ricty/TrueType/RictyDiscord
 cp -f Ricty*.ttf ~/.local/share/fonts/ricty/TrueType/Ricty
 fc-cache -vf
-cd ..
-sudo rm -r ricty_tmp

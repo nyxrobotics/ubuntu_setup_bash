@@ -19,7 +19,7 @@ gsettings set org.gnome.desktop.default-applications.terminal exec /usr/bin/term
 gsettings set org.gnome.desktop.default-applications.terminal exec-arg "-x"
 
 # >>>Disable crash report
-sudo rm /var/crash/*
+sudo find /var/crash -mindepth 1 -maxdepth 1 -delete
 sudo systemctl stop apport
 sudo systemctl disable apport
 sudo apt purge -y apport python3-apport

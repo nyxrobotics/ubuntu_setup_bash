@@ -10,7 +10,9 @@ sudo apt install -y python3-flake8-docstrings python3-pip python3-pytest-cov ros
 
 mkdir -p ~/ros2_humble/src;cd ~/ros2_humble
 vcs import --input https://raw.githubusercontent.com/ros2/ros2/humble/ros2.repos src
-sudo rosdep init
+if [ ! -e /etc/ros/rosdep/sources.list.d/20-default.list ]; then
+    sudo rosdep init
+fi
 rosdep update
 rosdep install --from-paths src --ignore-src -y --skip-keys "fastcdr rti-connext-dds-6.0.1 urdfdom_headers"
 if ! grep -Fxq "## ROS2 Humble paths" ~/.bashrc

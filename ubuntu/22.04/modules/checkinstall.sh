@@ -4,11 +4,18 @@ SCRIPT_DIR=$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)
 sudo apt install -y checkinstall gettext
 mkdir -p ~/lib
 cd ~/lib
-git clone git@github.com:giuliomoro/checkinstall.git
+if [ ! -d checkinstall/.git ]; then
+    git clone git@github.com:giuliomoro/checkinstall.git
+fi
 cd checkinstall
 
 # Reference: https://bbs.archlinux.org/viewtopic.php?id=265659
-patch -p1 < $SCRIPT_DIR/fix-checkinstall.patch
+if patch --dry-run -p1 < "$SCRIPT_DIR/fix-checkinstall.patch" >/dev/null 2>&1; then
+    patch -p1 < "$SCRIPT_DIR/fix-checkinstall.patch"
+elif ! patch --dry-run -R -p1 < "$SCRIPT_DIR/fix-checkinstall.patch" >/dev/null 2>&1; then
+    echo "fix-checkinstall.patch cannot be applied cleanly" >&2
+    exit 1
+fi
 
 ./configure
 make
